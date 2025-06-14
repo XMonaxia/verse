@@ -1,0 +1,83 @@
+.overlay {
+position: fixed;
+inset: 0;
+display: flex;
+justify-content: center;
+align-items: flex-start;
+background-color: rgba(48, 46, 61, 0.5);
+backdrop-filter: blur(1px);
+height: 100vh;
+width: 100%;
+padding: 20vh 5vh 0 5vh;
+}
+.modal {
+position: relative;
+border-radius: 0 10px 0 10px;
+border: 1px solid var(--hover-white);
+box-shadow: 0 0 5px var(--hover-white);
+background-color: var(--black);
+width: 100%;
+max-width: 600px;
+max-height: 60vh;
+overflow-y: auto;
+transition: transform 0.3s ease, opacity 0.3s ease;
+animation: fadeIn 0.3s ease;
+}
+.modal::-webkit-scrollbar {
+display: none;
+}
+@keyframes fadeIn {
+from {
+transform: translateY(20px);
+opacity: 0;
+}
+to {
+transform: translateY(0);
+opacity: 1;
+}
+}
+/* Content */
+.content {
+padding: 1rem;
+animation: contentFade 0.3s ease;
+background: var(--black-opacity);
+}
+@keyframes contentFade {
+from {
+opacity: 0;
+transform: translateX(10px);
+}
+to {
+opacity: 1;
+transform: translateX(0);
+}
+}
+/*Close Button  */
+.closeBtn {
+position: absolute;
+top: -0.4rem;
+right: 0;
+padding: 0.3rem 0.5rem;
+border-bottom: 1px solid var(--hover-white);
+border-left: 1px solid var(--hover-white);
+border-radius: 0 10px 0 10px;
+color: var(--hover-white);
+background-color: var(--hover-white-opacity);
+transition: color 0.3s ease, background-color 0.3s ease;
+font-size: 1.5rem;
+z-index: 11;
+}
+/* Media Hover */
+@media (hover: hover) {
+.tab:hover {
+color: var(--white);
+background-color: var(--hover-white-opacity);
+}
+.closeBtn:hover {
+color: var(--white);
+background-color: rgba(255, 0, 0, 0.3);
+}
+}
+/* Media Hover */
+@media (hover: none) {
+}

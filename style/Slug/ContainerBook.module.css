@@ -1,0 +1,105 @@
+.containerBookSlug {
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+min-height: 100vh;
+padding-top: 5vh;
+}
+.Bookinfo {
+width: 100%;
+max-width: 800px;
+text-align: center;
+font-family: var(--merienda);
+border-bottom: 1px solid var(--hover-white-opacity) ;
+padding-bottom: 5px;
+}
+.BookTitle {
+font-size: 2rem;
+font-weight: 700;
+}
+/* Content */
+.containerBook {
+width: 100%;
+height: 100%;
+padding: 0 10px;
+display: flex;
+}
+.bookRight {
+display: flex;
+flex-direction: column;
+width: 100%;
+}
+/* Kanan */
+.bookLeft {
+display: flex;
+flex-direction: column;
+width: 40%;
+height: 100%;
+padding: 10px 0;
+gap: 1rem;
+}
+.typeBook {
+display: flex;
+align-items: center;
+justify-content: space-between;
+border: 1px solid var(--hover-white-opacity);
+border-radius: 0 10px 0 10px;
+padding: 0.35rem 0.75rem;
+}
+.gendreBook {
+padding: 10px;
+border: 1px solid var(--hover-white-opacity);
+border-radius: 0 10px 0 10px;
+}
+.titleGendre {
+text-align: center;
+font-weight: 700;
+margin-bottom: 0.3rem;
+}
+.listGendre {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+@media screen and (max-width: 1000px) {
+.bookLeft {
+width: 45%;
+}
+}
+@media screen and (max-width: 768px) {
+.containerBook {
+flex-direction: column;
+}
+.typeBook, .gendreBook {
+display: none;
+}
+.bookLeft {
+flex-direction: row;
+width: 100%;
+}
+.BookTitle {
+font-size: 1.55rem;
+}
+}
+@media screen and (max-width: 576px) {
+.cardLeft {
+max-width: calc(50% - 0.555%);
+}
+.BookTitle {
+font-size: 1.35rem;
+}
+}
+@media screen and (max-width: 350px) {
+.cardLeft {
+max-width: 100%;
+}
+}
+@media (hover: hover) {
+.cardLeft:hover {
+background-color: var(--hover-black-opacity);
+}
+}
+@media (hover: none) {
+}

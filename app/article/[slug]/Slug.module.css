@@ -1,0 +1,47 @@
+.containerMain {
+position: relative;
+width: 100%;
+min-height: 100vh;
+}
+.carouselCategory {
+justify-content: space-between;
+flex-direction: column;
+height: auto;
+display: flex;
+padding: 20px;
+gap: 1rem;
+}
+.category {
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+.categoryButton {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 0.5rem;
+padding: 1rem 0;
+}
+.btncategory {
+text-align: center;
+padding: 0.75rem 1rem;
+border-radius: 6px;
+background-color: var(--hover-white-opacity);
+transition: background-color 0.3s ease;
+}
+.activeCategory  {
+background-color: var(--hover-white);
+}
+@media (hover: hover) {
+.btncategory:hover{
+background-color: var(--hover-white);
+}
+}
+@media (hover: none) {
+.btncategory:active {
+background-color: var(--hover-white);
+}
+}

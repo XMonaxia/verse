@@ -1,0 +1,211 @@
+/* Disable Button */
+.menuItem, .notivItem {
+cursor: wait;
+}
+/* Content */
+.combobox {
+width: 300px;
+}
+.comboboxmenu {
+display: flex;
+flex-direction: column;
+background-color: var(--black);
+border: 1px solid var(--hover-white-opacity);
+border-radius: 0 0 0 10px;
+padding: 0.7rem;
+}
+.menuContent {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+padding: 5px 0 0 0;
+max-height: 50vh;
+overflow-y: auto;
+scrollbar-width: none;
+-ms-overflow-style: none;
+}
+.appItem {
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+transition: transform 0.3s ease, background-color 0.3s ease;
+padding: 0.5rem;
+border-radius: 0 10px 0 10px;
+}
+.appIcon {
+font-size: 2rem;
+margin-bottom: 0.3rem;
+color: var(--hover-white);
+}
+.appName {
+font-size: 0.85rem;
+font-weight: 500;
+}
+.useinfo,
+.useinfos {
+display: flex;
+flex-direction: column;
+text-align: center;
+gap: 3px;
+}
+.useinfo {
+padding-bottom: 10px;
+border-bottom: 1px solid var(--hover-white-opacity);
+}
+.useinfo h3 {
+font-weight: 400;
+}
+.useinfos {
+padding-top: 10px;
+border-top: 1px solid var(--hover-white-opacity);
+}
+.team {
+display: flex;
+justify-content: space-around;
+}
+.team a {
+font-size: 0.85rem;
+font-weight: 400;
+color: var(--hover-white);
+transition: color 0.3s ease;
+}
+.closeBtn {
+position: absolute;
+top: -0.5rem;
+right: 0.5rem;
+color: var(--hover-white);
+transition: color 0.3s ease;
+font-size: 2rem;
+}
+/* Notiv */
+.menuNotiv, .menuUser {
+height: 100%;
+max-height: 50vh;
+overflow-y: auto;
+scrollbar-width: none;
+-ms-overflow-style: none;
+}
+.notivList {
+display: flex;
+flex-direction: column;
+gap: 0.3rem;
+padding: 0.5rem 0;
+width: 100%;
+}
+.notivItem {
+display: flex;
+flex-direction: column;
+padding: 0.5rem;
+background-color: var(--hover-black);
+border-radius: 0 10px 0 10px;
+border: 1px solid var(--hover-white-opacity);
+transition: background-color 0.3s ease;
+}
+.notivText {
+font-size: 0.95rem;
+}
+.notivTime {
+color: var(--hover-white);
+font-size: 0.75rem;
+margin-top: 3px;
+align-self: flex-end;
+}
+.noNotiv {
+color: var(--hover-white);
+font-size: 0.9rem;
+text-align: center;
+width: 100%;
+}
+/* UserMenu */
+.menuUser {
+display: flex;
+flex-direction: column;
+padding: 0.5rem 0;
+}
+.menuItem {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0.65rem 0.6rem;
+border-radius: 0 10px 0 10px;
+transition: background-color 0.2s ease;
+font-weight: 500;
+}
+.iconPlus {
+font-size: 0.9rem;
+opacity: 0.7;
+}
+.menuItem kbd {
+background-color: var(--hover-black-opacity);
+border-radius: 0 5px 0 5px;
+padding: 2px 3px;
+font-size: 0.85rem;
+}
+/* CTA upgrade */
+.upgradeWrap {
+margin-top: 0.7rem;
+text-align: center;
+}
+.upgradeBtn {
+width: 100%;
+background-color: var(--hover-white);
+color: var(--black);
+padding: 0.5rem;
+border-radius: 0 10px 0 10px;
+font-family: "merienda";
+font-size: 0.85rem;
+font-weight: 600;
+transition: background-color 0.3s ease;
+}
+@media screen and (max-width: 576px) {
+.menuContent {
+grid-template-columns: repeat(4, 1fr);
+}
+}
+@media screen and (max-width: 450px) {
+.menuContent {
+grid-template-columns: repeat(3, 1fr);
+}
+}
+@media (hover: hover) {
+.closeBtn:hover {
+color: var(--white);
+}
+.appItem:hover {
+background-color: var(--hover-black-opacity);
+transform: translateY(-3px);
+}
+.team a:hover {
+color: var(--white);
+}
+/* Notiv */
+.notivItem:hover {
+background-color: var(--hover-white-opacity);
+}
+/* UserMenu */
+.menuItem:hover {
+background-color: var(--hover-black-opacity);
+}
+.upgradeBtn:hover {
+background-color: var(--white);
+}
+}
+@media (hover: none) {
+.appItem:active {
+background-color: var(--hover-white-opacity);
+}
+.team a:active {
+color: var(--white);
+}
+/* Notiv */
+.notivItem:active {
+background-color: var(--hover-white-opacity);
+}
+/* UserMenu */
+.menuItem:active {
+background-color: var(--hover-black-opacity);
+}
+.upgradeBtn:active {
+background-color: var(--white);
+}
+}

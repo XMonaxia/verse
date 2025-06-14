@@ -1,0 +1,14 @@
+/* Content Book */
+.ContentBookPembuka {
+font-family: var(--merienda);
+font-weight: 700;
+margin: 1rem 0;
+padding: 10px;
+}
+.penghantarPembuka {
+font-size: 1.2rem;
+margin-bottom: 0.3rem;
+}
+.contentPembuka {
+color: var(--hover-white);
+}

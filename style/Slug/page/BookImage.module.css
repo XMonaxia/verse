@@ -1,0 +1,68 @@
+/* Image */
+.bookImage {
+display: flex;
+gap: 10px;
+padding: 10px;
+width: 100%;
+height: 400px;
+}
+.image {
+border-radius: 0 10px 0 10px;
+object-fit: cover;
+width: 100%;
+height: 100%;
+}
+.actionShare {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+}
+.buttonActionShared {
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.2rem;
+border: 1px solid var(--hover-white-opacity);
+border-radius: 0 5px 0 5px;
+padding: 0.5rem;
+transition: background-color 0.3s ease;
+}
+@media screen and (max-width: 1000px) {
+.bookImage {
+height: 350px;
+}
+}
+@media screen and (max-width: 576px) {
+.bookImage {
+padding: 0;
+margin: 10px 0;
+height: 300px;
+}}
+@media screen and (max-width: 350px) {
+.bookImage {
+height: auto;
+flex-wrap: wrap;
+}
+.image {
+width: 70%;
+max-height: 350px;
+flex: 1 1 70%;
+}
+.actionShare {
+flex-direction: row;
+max-height: 350px;
+flex: 1 1 30%;
+margin-bottom: 1rem;
+}
+}
+@media (hover: hover) {
+.buttonActionShared:hover {
+background-color: var(--hover-black-opacity);
+}
+}
+@media (hover: none) {
+.buttonActionShared:active {
+background-color: var(--hover-black-opacity);
+}
+}

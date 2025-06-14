@@ -1,0 +1,180 @@
+/* Disabled Content */
+.startButton, .btnDoc {
+cursor: wait;
+}
+/* svg */
+.SVGContainers {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: block;
+opacity: 0.5;
+overflow: hidden;
+}
+.gridoverlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+stroke: var(--main-site-color-opacity);
+fill: none;
+z-index: -10;
+}
+.gridline {
+stroke-width: 0.1;
+stroke-dasharray: 100;
+stroke-dashoffset: 100;
+animation: drawLine 3s forwards ease-in-out;
+}
+@keyframes drawLine {
+0% {
+stroke-dashoffset: 100;
+}
+100% {
+stroke-dashoffset: 0;
+}
+}
+/* Section 1 */
+.bookCard {
+position: relative;
+top: -5vh;
+border-radius: 0 10px 0 10px;
+border: 1px solid var(--hover-white);
+box-shadow: 0px 0 5px var(--white);
+width: 200px;
+height: 250px;
+text-align: center;
+overflow: hidden;
+z-index: 3;
+}
+.bookCard::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 25px;
+height: 100%;
+background-color: var(--white);
+box-shadow: 0px 0 5px var(--white);
+}
+.images {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.bookMark {
+width: 50px;
+height: 60px;
+position: absolute;
+color: var(--white);
+top: -3px;
+right: -6px;
+}
+.titleBook {
+width: 90%;
+font-size: 1.5rem;
+}
+.descriptionBook {
+width: 70%;
+color: var(--hover-white);
+display: -webkit-box;
+line-clamp: 3;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: normal;
+}
+.startButton {
+margin-top: 0.5rem;
+padding: 0.65rem 0;
+width: 90%;
+max-width: 300px;
+margin-bottom: 5vh;
+background-color: var(--hover-white);
+color: var(--black);
+font-weight: 700;
+border-radius: 0 10px 0 10px;
+z-index: 5;
+transition: background-color 0.3s ease;
+}
+/* Section 2-4 */
+.doc {
+display: flex;
+justify-content: space-between;
+align-items: center;
+max-width: 1400px;
+width: 100%;
+margin: 5vh 0;
+}
+.docInfo {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+.docIcon {
+font-size: 3rem;
+}
+.docdescripsi {
+max-width: 600px;
+color: var(--hover-white);
+}
+.btnDoc {
+border: 1px solid var(--hover-white);
+padding: 0.6rem 1rem;
+border-radius: 0 10px 0 10px;
+background-color: transparent;
+transition: background-color 0.3s ease, color 0.3s ease;
+font-weight: 700;
+}
+@media screen and (max-width: 768px) {
+.descriptionBook, .docdescripsi {
+font-size: 0.9rem;
+}
+.bookCard {
+width: 170px;
+height: 220px;
+}
+.titleBook {
+font-size: 1.3rem;
+}
+.doc {
+flex-direction: column;
+gap: 5px;
+}
+.docInfo {
+align-self: flex-start;
+}
+.docIcon {
+font-size: 2.7rem;
+}
+.btnDoc {
+align-self: flex-end;
+}
+}
+@media screen and (max-width: 576px) {
+.description, .descriptionBook, .docdescripsi, .bookDesc {
+font-size: 0.8rem;
+}
+.bookCard {
+width: 140px;
+height: 190px;
+}
+.titleBook {
+font-size: 1.1rem;
+}
+}
+@media (hover: hover) {
+.startButton:hover {
+background-color: var(--white);
+}
+.btnDoc:hover {
+background-color: var(--hover-white);
+color: var(--black);
+}
+}
+@media (hover: none) {
+}

@@ -1,0 +1,194 @@
+.messageForm {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+margin: 0.5rem 0;
+}
+.title {
+font-family: var(--nosifer);
+text-align: center;
+margin-bottom: 1rem;
+}
+.name {
+display: flex;
+gap: 10px;
+}
+.wrapp {
+position: relative;
+border: none;
+display: flex;
+flex-direction: column;
+gap: 0.3rem;
+width: 100%;
+}
+.wrapp legend {
+margin-bottom: 0.3rem;
+}
+.label {
+font-size: 1rem;
+font-weight: 500;
+}
+.input {
+padding: 0.5rem;
+background-color: transparent;
+border: 1px solid var(--hover-white-opacity);
+border-radius: 0 10px 0 10px;
+color: var(--white);
+width: 100%;
+resize: vertical;
+font-family: inherit;
+font-size: 1rem;
+transition: border 0.3s ease;
+appearance: none;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+.input:focus {
+border: 1px solid var(--hover-white);
+outline: none;
+}
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.input option {
+background-color: var(--black);
+}
+.toggleBtn {
+position: absolute;
+right: 0.75rem;
+background: none;
+border: none;
+cursor: pointer;
+font-size: 1.1rem;
+color: #666;
+}
+.radioWrapper {
+display: flex;
+align-items: center;
+gap: 0.4rem;
+padding: 0.5rem 1rem;
+border: 1px solid var(--hover-white-opacity);
+border-radius: 0 10px 0 10px;
+background-color: transparent;
+color: var(--white);
+font-size: 1rem;
+cursor: pointer;
+}
+.radioWrapper input[type="radio"] {
+margin: 0;
+accent-color: var(--black);
+}
+.radioTerms {
+display: flex;
+align-items: center;
+gap: 0.4rem;
+margin: 0.3rem;
+color: var(--white);
+font-size: 1rem;
+}
+.radioTerms input[type="checkbox"] {
+margin: 0;
+accent-color: var(--black);
+}
+.radioTerms a {
+color: var(--hover-white);
+transition: color 0.3s ease;
+}
+.Send {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-top: 0.5rem;
+}
+.sendBtn {
+position: relative;
+font-weight: 700;
+background-color: transparent;
+padding: 0.5rem 0.8rem;
+border-radius: 0 10px 0 10px;
+border: 1px solid var(--hover-white-opacity);
+font-weight: bold;
+color: var(--hover-white);
+transition: color 0.3s ease;
+z-index: 1;
+}
+.sendBtn::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: var(--hover-white-opacity);
+backdrop-filter: blur(3px);
+border-radius: 0 10px 0 10px;
+transform: scale(0);
+transition: transform 0.3s ease;
+z-index: -1;
+}
+.google {
+position: absolute;
+right: 9px;
+bottom: -2px;
+font-size: 1.75rem;
+}
+/* Tab */
+.tabtambahan {
+display: flex;
+gap: 5px;
+}
+.imagetambahan {
+position: relative;
+width: 100%;
+height: auto;
+overflow: hidden;
+aspect-ratio: 4 / 3;
+border-radius: 0 10px 0 10px;
+background-color: var(--black-opacity);
+border: 1px solid var(--white);
+}
+.tombolremove {
+position: absolute;
+top: -0.4rem;
+right: 0;
+padding: 0.3rem 0.5rem;
+border-bottom: 1px solid var(--hover-white);
+border-left: 1px solid var(--hover-white);
+border-radius: 0 10px 0 10px;
+color: var(--hover-white);
+background-color: rgba(255, 0, 0, 0.3);
+transition: color 0.3s ease, background-color 0.3s ease;
+font-size: 1.5rem;
+z-index: 11;
+}
+.hideTime {
+width: 100%;
+}
+.hideTime::-webkit-media-controls-time-remaining-display,
+.hideTime::-webkit-media-controls-current-time-display {
+display: none;
+}
+/* Media Hover */
+@media (hover: hover) {
+.sendBtn:hover {
+color: var(--white);
+}
+.sendBtn:hover::before {
+transform: scale(1);
+}
+.radioTerms a:hover {
+color: var(--white);
+}
+.tombolremove:hover {
+color: var(--white);
+background-color: rgba(255, 0, 0, 0.9);
+}
+}
+/* Media Hover */
+@media (hover: none) {
+.sendBtn:active {
+color: var(--white);
+}
+}
