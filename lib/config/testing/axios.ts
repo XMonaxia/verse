@@ -1,5 +1,9 @@
 import { AllCategoryResponse, AllResponse } from "@/utils/testing/types";
 import {
+  AddArticleInput,
+  AddArticleResponse,
+  AddCategoryInput,
+  AddCategoryResponse,
   LoginInput,
   LoginResponse,
   RegisterInput,
@@ -8,7 +12,7 @@ import {
 import axios from "axios";
 const baseURL =
   process.env.TESTING_ENDPOINT || "https://test-fe.mysellerpintar.com";
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
   baseURL,
 });
 // Testing
@@ -57,8 +61,9 @@ export async function allArticle(): Promise<AllResponse> {
 // Categories
 export async function allCategories(): Promise<AllCategoryResponse> {
   try {
-    const response =
-      await axiosInstance.get<AllCategoryResponse>("/api/categories");
+    const response = await axiosInstance.get<AllCategoryResponse>(
+      "/api/categories"
+    );
     return response.data;
   } catch (err) {
     if (axios.isAxiosError(err) && err.response) {
@@ -68,4 +73,69 @@ export async function allCategories(): Promise<AllCategoryResponse> {
     }
     throw new Error("Categories gagal di ambil");
   }
+}
+// ADD Category + Article
+export async function addArticle(
+  data: AddArticleInput,
+  token: string
+): Promise<AddArticleResponse> {
+  try {
+    const response = await axiosInstance.post<AddArticleResponse>(
+      "/api/articles",
+      data,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    return response.data;
+  } catch (err) {
+    if (axios.isAxiosError(err) && err.response) {
+      throw new Error(err.response.data?.message || "Login gagal");
+    }
+    throw new Error("Gagal login: Network atau server error");
+  }
+}
+export async function addCategory(
+  data: AddCategoryInput,
+  token: string
+): Promise<AddCategoryResponse> {
+  try {
+    const response = await axiosInstance.post<AddCategoryResponse>(
+      "/api/categories",
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (err) {
+    if (axios.isAxiosError(err) && err.response) {
+      throw new Error(
+        err.response.data?.message || "Gagal menambahkan kategori"
+      );
+    }
+    throw new Error("Network/server error");
+  }
+}
+export async function updateCategory(
+  id: string,
+  data: AddCategoryInput,
+  token: string
+): Promise<AddCategoryResponse> {
+  const response = await axiosInstance.patch<AddCategoryResponse>(
+    `/api/categories/${id}`,
+    data,
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+  return response.data;
+}
+export async function deleteCategory(
+  id: string,
+  token: string
+): Promise<{ message: string }> {
+  const response = await axiosInstance.delete<{ message: string }>(
+    `/api/categories/${id}`,
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+  return response.data;
 }

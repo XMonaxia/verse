@@ -18,13 +18,25 @@ const nextConfig: NextConfig = withPWA({
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "res.cloudinary.com",
+        hostname: "s3.sellerpintar.com",
         port: "",
         pathname: "/**",
       },
       {
         protocol: "https",
-        hostname: "s3.sellerpintar.com",
+        hostname: "your-s3-bucket.amazonaws.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "res.cloudinary.com",
         port: "",
         pathname: "/**",
       },

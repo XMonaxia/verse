@@ -16,9 +16,10 @@ interface Props {
   articles: ArticleResponse[];
   categories: CategoryResponse[];
   onBookClick: (articles: ArticleResponse) => void;
+  onAddClick: () => void;
 }
 const tabs = ["Articles", "Category"];
-const Content = ({ articles, categories, onBookClick }: Props) => {
+const Content = ({ articles, categories, onBookClick, onAddClick }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -31,9 +32,9 @@ const Content = ({ articles, categories, onBookClick }: Props) => {
       <div className="max-h-60 webkitnone m-07 ovenflow-y-auto radius-10 p-04">
         {activeIndex === 1 && <EBook categories={categories} />}
         {activeIndex === 0 && (
-          <Novel articles={articles} onBookClick={onBookClick} />
+          <Novel articles={articles} onBookClick={onBookClick} onAddClick={onAddClick} />
         )}
-      </div>
+        </div>
     </>
   );
 };

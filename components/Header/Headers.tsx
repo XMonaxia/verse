@@ -80,7 +80,7 @@ const Headers = () => {
           href={"/"}
           className="c-hover-white relative merienda fw-700 m-l-2-3 trans-color-03 md-m-l-2 md-fs-09 logohead"
         >
-          {isLoggedIn ? <h2>{user?.username}</h2> : <h2>Naliverse</h2>}
+          {isLoggedIn ? <h2>{user?.role}</h2> : <h2>Naliverse</h2>}
         </Link>
         <div className="flex-center gap-1">
           <button

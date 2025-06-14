@@ -10,10 +10,10 @@ import { toSlug } from "@/utils/slug";
 interface NovelProps {
   articles: ArticleResponse[];
   onBookClick: (articles: ArticleResponse) => void;
+  onAddClick: () => void;
 }
-const Novel = ({ articles, onBookClick }: NovelProps) => {
+const Novel = ({ articles, onBookClick, onAddClick }: NovelProps) => {
   const { isLoggedIn, user } = useAuth();
-
   return (
     <div className="grid grid-collum-book gap-05">
       {articles.map((articles) => (
@@ -56,11 +56,11 @@ const Novel = ({ articles, onBookClick }: NovelProps) => {
       ))}
       {isLoggedIn && user?.role === "Admin" && (
         <div className="flex-col item-c jus-c text-c gap-03">
-          <Link href="#">
+          <button onClick={onAddClick}>
             <div className="flex-center jus-c trans-bg-03 w-70px h-70px fs-3 radius-curcle border-custom bg-hover-white-opacity">
               ＋
             </div>
-          </Link>
+          </button>
           <div className="merienda w-100 p-tb-03-lr-05 ovenflow-hidden">
             <h3 className="fs-08">Add Article</h3>
           </div>

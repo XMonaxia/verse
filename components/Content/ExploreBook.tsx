@@ -10,6 +10,8 @@ import { ArticleResponse, CategoryResponse } from "@/utils/testing/types";
 import ModalAuth from "../Auth/ModalAuth";
 import Login from "../Auth/Login/Login";
 import { useAuth } from "../Provider/AuthWrapper";
+import ModalAddArticle from "../Admin/Add/ModalAddArticle";
+import ModalAddCategory from "../Admin/Add/ModalAddCategory";
 
 const ModalBook = dynamic(() => import("@/components/Content/Book/ModalBook"), {
   ssr: false,
@@ -36,6 +38,7 @@ interface ExploreProps {
 }
 const ExploreBook = ({ articles, categories }: ExploreProps) => {
   const [showModal, setShowModal] = useState(false);
+  const [showModalAdd, setShowModalAdd] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState<ArticleResponse>();
   const [activeModalTabIndex, setActiveModalTabIndex] = useState(0);
   const [search, setSearch] = useState("");
@@ -44,6 +47,13 @@ const ExploreBook = ({ articles, categories }: ExploreProps) => {
   const filteredArticles = articles.filter((article) =>
     article.title.toLowerCase().includes(search.toLowerCase())
   );
+  const handleOpenAdd = () => {
+    if (isLoggedIn) {
+      setShowModalAdd(true)
+    } else {
+      setShowModalAdd(true)
+    }
+  }
   const handleOpenModal = (article: ArticleResponse) => {
     if (isLoggedIn) {
       setSelectedArticle(article);
@@ -52,6 +62,7 @@ const ExploreBook = ({ articles, categories }: ExploreProps) => {
       setShowModalLogin(true);
     }
   };
+  console.log("click", setShowModalAdd)
   return (
     <>
       <Parallax speed={0.5}>
@@ -64,6 +75,7 @@ const ExploreBook = ({ articles, categories }: ExploreProps) => {
             articles={filteredArticles}
             categories={categories}
             onBookClick={handleOpenModal}
+            onAddClick={handleOpenAdd}
           />
         </div>
       </Parallax>
@@ -102,6 +114,17 @@ const ExploreBook = ({ articles, categories }: ExploreProps) => {
           }}
         />
       </ModalAuth>
+      <ModalTabs
+          show={showModalAdd}
+          onClose={() => {
+            setShowModalAdd(false);
+          }}
+          tabs={["Article", "Category"]}
+          contents={[
+            <ModalAddArticle key="Article" categories={categories} />,
+            <ModalAddCategory key="Category" />,
+          ]}
+        />
     </>
   );
 };
