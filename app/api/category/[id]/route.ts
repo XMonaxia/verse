@@ -8,6 +8,7 @@ interface Context {
 }
 // UPDATE
 export async function PUT(req: NextRequest, context: Promise<Context>) {
+  const { params } = await context;
   const token = req.cookies.get("token")?.value;
   if (!token) {
     return NextResponse.json(
@@ -16,7 +17,6 @@ export async function PUT(req: NextRequest, context: Promise<Context>) {
     );
   }
   try {
-    const { params } = await context;
     const body = await req.json();
     const validated = AddCategoryPayload.parse(body);
     const result = await updateCategory((await params).id, validated, token);
@@ -31,6 +31,7 @@ export async function PUT(req: NextRequest, context: Promise<Context>) {
 }
 // DELETE
 export async function DELETE(req: NextRequest, context: Promise<Context>) {
+  const { params } = await context;
   const token = req.cookies.get("token")?.value;
   if (!token) {
     return NextResponse.json(
@@ -39,7 +40,6 @@ export async function DELETE(req: NextRequest, context: Promise<Context>) {
     );
   }
   try {
-    const { params } = await context;
     const result = await deleteCategory((await params).id, token);
     return NextResponse.json({ message: result.message });
   } catch (err) {
