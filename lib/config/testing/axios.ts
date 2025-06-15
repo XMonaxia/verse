@@ -58,6 +58,51 @@ export async function allArticle(): Promise<AllResponse> {
     throw new Error("Article gagal di ambil");
   }
 }
+export async function addArticle(
+  data: AddArticleInput,
+  token: string
+): Promise<AddArticleResponse> {
+  try {
+    const response = await axiosInstance.post<AddArticleResponse>(
+      "/api/articles",
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (err) {
+    if (axios.isAxiosError(err) && err.response) {
+      console.error("Response Error:", err.response.data); // debug
+      throw new Error(err.response.data?.message || "Login gagal");
+    }
+    throw new Error("Gagal login: Network atau server error");
+  }
+}
+export async function updateArticle(
+  id: string,
+  data: AddArticleInput,
+  token: string
+): Promise<AddArticleResponse> {
+  const response = await axiosInstance.put<AddArticleResponse>(
+    `/api/articles/${id}`,
+    data,
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+  return response.data;
+}
+export async function deleteArticle(
+  id: string,
+  token: string
+): Promise<{ message: string }> {
+  const response = await axiosInstance.delete<{ message: string }>(
+    `/api/articles/${id}`,
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+  return response.data;
+}
 // Categories
 export async function allCategories(): Promise<AllCategoryResponse> {
   try {
@@ -72,25 +117,6 @@ export async function allCategories(): Promise<AllCategoryResponse> {
       );
     }
     throw new Error("Categories gagal di ambil");
-  }
-}
-// ADD Category + Article
-export async function addArticle(
-  data: AddArticleInput,
-  token: string
-): Promise<AddArticleResponse> {
-  try {
-    const response = await axiosInstance.post<AddArticleResponse>(
-      "/api/articles",
-      data,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    return response.data;
-  } catch (err) {
-    if (axios.isAxiosError(err) && err.response) {
-      throw new Error(err.response.data?.message || "Login gagal");
-    }
-    throw new Error("Gagal login: Network atau server error");
   }
 }
 export async function addCategory(
@@ -122,7 +148,7 @@ export async function updateCategory(
   data: AddCategoryInput,
   token: string
 ): Promise<AddCategoryResponse> {
-  const response = await axiosInstance.patch<AddCategoryResponse>(
+  const response = await axiosInstance.put<AddCategoryResponse>(
     `/api/categories/${id}`,
     data,
     { headers: { Authorization: `Bearer ${token}` } }

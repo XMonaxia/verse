@@ -4,6 +4,7 @@ import styles from "@/style/Combobox/ComboBoxMenu.module.css";
 import { useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
+import Link from "next/link";
 type UserMenuProps = {
   onClose: () => void;
   onLogoutSuccess: () => void;
@@ -17,7 +18,7 @@ const UserMenu = ({
   onLogoutSuccess,
 }: UserMenuProps) => {
   const router = useRouter();
-  const { user } = useAuth();
+  const { isLoggedIn, user } = useAuth();
 
   const handleLogout = async () => {
     try {
@@ -55,15 +56,21 @@ const UserMenu = ({
         </div>
         <div className={styles.menuUser}>
           <button className={styles.menuItem}>Profile</button>
-          <button className={styles.menuItem}>Dashboard</button>
-          <button className={styles.menuItem}>Account Settings</button>
-          <button className={styles.menuItem}>
-            Create Article <span className={styles.iconPlus}>＋</span>
-          </button>
+          {isLoggedIn && user?.role === "Admin" && (
+            <>
+              <Link href="/dashboard" className={styles.menuItem}>
+                Dashboard
+              </Link>
+              <button className={styles.menuItem}>
+                Create Article <span className={styles.iconPlus}>＋</span>
+              </button>
+            </>
+          )}
           <button className={styles.menuItem}>
             Gift
             <span>🎁</span>
           </button>
+          <button className={styles.menuItem}>Settings</button>
           <button className={styles.menuItem} onClick={handleLogout}>
             Log Out<span>↩</span>
           </button>

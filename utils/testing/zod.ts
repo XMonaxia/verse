@@ -1,21 +1,30 @@
 import { z } from "zod";
 
 // Validate
-export const usernamePayload = z.string().min(3).max(255);
-export const passwordPayload = z.string().min(7).max(255);
+export const usernamePayload = z.string().min(3);
+export const passwordPayload = z.string().min(7);
+export const imagePayload = z.string();
 export const rolePayload = z.enum(["User", "Admin"]);
-export const categoryPayload = z.enum([
-  "Teknologi",
-  "Bisnis",
-  "Olahraga",
-  "Hiburan",
-]);
-// Register
+// Payload
 export const RegisterPayload = z.object({
   username: usernamePayload,
   password: passwordPayload,
   role: rolePayload,
 });
+export const LoginPayload = z.object({
+  username: usernamePayload,
+  password: passwordPayload,
+});
+export const AddCategoryPayload = z.object({
+  name: imagePayload,
+});
+export const AddArticlePayload = z.object({
+  title: usernamePayload,
+  content: passwordPayload,
+  categoryId: usernamePayload,
+  imageUrl: imagePayload,
+});
+// Type
 export type RegisterResponse = {
   username: string;
   password: string;
@@ -23,24 +32,14 @@ export type RegisterResponse = {
   createdAt: string;
   updatedAt: string;
 };
-// Login
-export const LoginPayload = z.object({
-  username: usernamePayload,
-  password: passwordPayload,
-});
 export type LoginResponse = {
   token: string;
 };
-// Me
 export type MeResponse = {
   id: string;
   username: string;
   role: string;
 };
-// Add Category
-export const AddCategoryPayload = z.object({
-  name: categoryPayload,
-});
 export type AddCategoryResponse = {
   id: string;
   name: string;
@@ -48,13 +47,6 @@ export type AddCategoryResponse = {
   createdAt: string;
   updatedAt: string;
 };
-// Add Article
-export const AddArticlePayload = z.object({
-  title: passwordPayload,
-  content: passwordPayload,
-  categoryId: usernamePayload,
-  imageUrl: categoryPayload,
-});
 export type AddArticleResponse = {
   id: string;
   title: string;

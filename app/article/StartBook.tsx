@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import { MdOutlineBookmark } from "react-icons/md";
 import style from "./Book.module.css";
-
 const StartBook = () => {
   return (
     <section className="w-100 flex-col item-c jus-c text-c radius-10-custom border-custom max-w-1000 gap-05 relative m-t-5vh">
@@ -58,5 +57,4 @@ const StartBook = () => {
     </section>
   );
 };
-
 export default StartBook;

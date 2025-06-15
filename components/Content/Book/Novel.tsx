@@ -22,8 +22,12 @@ const Novel = ({ articles, onBookClick, onAddClick }: NovelProps) => {
           className="bookCard relative border-custom radius-10-custom ovenflow-hidden b-black"
         >
           <div className="bookActions absolute flex-col gap-03 z-10 opacity-0 right-03 top-03 pointer-none">
-            <button className="actionButton b-black-opacity fs-1">❤️</button>
-            <button className="actionButton b-black-opacity fs-1">📌</button>
+            <Link
+              href={`/article/${toSlug(articles.category.name)}`}
+              className="actionButton c-hover-white fs-1 w-100"
+            >
+              {articles.category.name}
+            </Link>
           </div>
           <div className="flex-col jus-between item-f-c h-100-persen">
             <Image
@@ -46,7 +50,9 @@ const Novel = ({ articles, onBookClick, onAddClick }: NovelProps) => {
               </p>
             </button>
             <Link
-              href={`/article/${toSlug(articles.category.name)}/${toSlug(articles.title)}`}
+              href={`/article/${toSlug(articles.category.name)}/${toSlug(
+                articles.title
+              )}`}
               className="w-100 b-main-site-blue-t text-c c-hover-white trans-color-03 p-tb-05"
             >
               Learn Book

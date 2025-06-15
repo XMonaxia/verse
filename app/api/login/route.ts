@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { LoginPayload } from "@/utils/testing/zod";
-import { login } from "@/lib/config/testing/axios"; // Ini fetch ke BACKEND-mu
+import { login } from "@/lib/config/testing/axios";
+import { OK, UNAUTHORIZED } from "@/utils/testing/status";
 
 export async function POST(req: NextRequest) {
   try {
@@ -8,8 +9,8 @@ export async function POST(req: NextRequest) {
     const validated = LoginPayload.parse(body);
     const result = await login(validated);
     const response = NextResponse.json(
-      { message: "Login berhasil" },
-      { status: 200 }
+      { message: "Login berhasil", data: result },
+      { status: OK }
     );
     response.cookies.set("token", result.token, {
       httpOnly: true,
@@ -21,6 +22,9 @@ export async function POST(req: NextRequest) {
     return response;
   } catch (err) {
     console.log("error", err);
-    return NextResponse.json({ message: "Gagal Login" }, { status: 401 });
+    return NextResponse.json(
+      { message: "Gagal Login" },
+      { status: UNAUTHORIZED }
+    );
   }
 }

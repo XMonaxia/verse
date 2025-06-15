@@ -1,29 +1,34 @@
+import { INTERNAL_SERVER_ERROR, UNAUTHORIZED } from "@/utils/testing/status";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
+  const EndPoint = process.env.TESTING_ENDPOINT;
   const token = req.cookies.get("token")?.value;
   if (!token) {
-    return NextResponse.json({ message: "No token" }, { status: 401 });
+    return NextResponse.json(
+      { message: "UNAUTHORIZED" },
+      { status: UNAUTHORIZED }
+    );
   }
   try {
-    const response = await fetch(
-      "https://test-fe.mysellerpintar.com/api/auth/profile",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await fetch(`${EndPoint}/api/auth/profile`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     if (!response.ok) {
-      return NextResponse.json({ message: "Invalid token" }, { status: 401 });
+      return NextResponse.json(
+        { message: "UNAUTHORIZED" },
+        { status: UNAUTHORIZED }
+      );
     }
     const profile = await response.json();
-    return NextResponse.json({ token, profile });
+    return NextResponse.json({ profile });
   } catch (err) {
     console.log("Failed to validate token:", err);
     return NextResponse.json(
-      { message: "Token validation failed" },
-      { status: 500 }
+      { message: "INTERNAL_SERVER_ERROR" },
+      { status: INTERNAL_SERVER_ERROR }
     );
   }
 }

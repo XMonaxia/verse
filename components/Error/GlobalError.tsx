@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import style from "./NotFound.module.css";
+import style from "@/style/NotFound.module.css";
 export default function GlobalError({
   error,
   resetAction,
@@ -14,8 +14,8 @@ export default function GlobalError({
       <Image
         className={style.image}
         src="/naliverse/notfound.webp"
-        height={1500}
-        width={1500}
+        height={1000}
+        width={1000}
         quality={100}
         alt={"Not Found"}
         priority

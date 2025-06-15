@@ -15,22 +15,22 @@ const AppsMenu = ({ onClose }: AppsMenuProps) => {
     isLoggedIn
       ? {
           type: "link",
-          name: "Books",
+          name: "Article",
           href: "/article",
           icon: <GiBookmarklet />,
         }
       : {
           type: "button",
-          name: "Books",
+          name: "Article",
           icon: <GiBookmarklet />,
           onClick: () =>
             alert("Silakan login terlebih dahulu untuk mengakses Buku."),
         },
     {
       type: "button",
-      name: "Save Book",
+      name: "Save Article",
       icon: <BsFillBookmarksFill />,
-      onClick: () => alert("Save Book Sedang Dalam Building"),
+      onClick: () => alert("Save Article Sedang Dalam Building"),
     },
     {
       type: "button",

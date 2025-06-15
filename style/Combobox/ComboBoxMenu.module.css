@@ -1,7 +1,3 @@
-/* Disable Button */
-.menuItem, .notivItem {
-cursor: wait;
-}
 /* Content */
 .combobox {
 width: 300px;

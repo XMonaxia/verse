@@ -98,8 +98,10 @@ transition: color 0.3s ease;
 }
 .Send {
 display: flex;
+flex-wrap: wrap;
 align-items: center;
 justify-content: space-between;
+gap: 5px;
 margin-top: 0.5rem;
 }
 .sendBtn {

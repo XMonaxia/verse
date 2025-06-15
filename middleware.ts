@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-const protectedRoutes = ["/article"];
+const protectedRoutes = [
+  "/article/:path*",
+  "/article",
+  "/dashboard/:path*",
+  "/dashboard",
+];
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const isProtected = protectedRoutes.some((route) =>
@@ -11,8 +16,9 @@ export function middleware(req: NextRequest) {
     console.warn("Akses tanpa token, redirect ke halaman utama.");
     return NextResponse.redirect(new URL("/", req.url));
   }
+
   return NextResponse.next();
 }
 export const config = {
-  matcher: ["/article/:path*", "/article"],
+  matcher: ["/article/:path*", "/article", "/dashboard/:path*", "/dashboard"],
 };

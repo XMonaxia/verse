@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { mongooseConnect } from "@/lib/config/db";
 import PuisiModel from "@/model/Puisi";
+import { INTERNAL_SERVER_ERROR } from "@/utils/testing/status";
 export async function GET() {
   await mongooseConnect();
   try {
@@ -10,7 +11,7 @@ export async function GET() {
     console.log("Gagal Ambil Puisi", error);
     return NextResponse.json(
       { error: "Gagal mengambil Puisi" },
-      { status: 500 }
+      { status: INTERNAL_SERVER_ERROR }
     );
   }
 }

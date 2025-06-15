@@ -1,3 +1,4 @@
+import { INTERNAL_SERVER_ERROR } from "@/utils/testing/status";
 import { NextResponse } from "next/server";
 
 export async function DELETE() {
@@ -13,6 +14,9 @@ export async function DELETE() {
     return Response;
   } catch (err) {
     console.error("Logout error:", err);
-    return NextResponse.json({ message: "Gagal Logout" }, { status: 500 });
+    return NextResponse.json(
+      { message: "Gagal Logout" },
+      { status: INTERNAL_SERVER_ERROR }
+    );
   }
 }

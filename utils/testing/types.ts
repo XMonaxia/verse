@@ -10,7 +10,6 @@ export interface AllCategoryResponse {
   currentPage: 0;
   totalPages: 0;
 }
-
 export interface ArticleResponse {
   id: string;
   title: string;

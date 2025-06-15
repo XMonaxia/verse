@@ -6,13 +6,10 @@ import { BookMetadata } from "@/lib/seo/metadata";
 import AllBook from "./AllBook";
 import { allArticle } from "@/lib/config/testing/axios";
 import StartBook from "./StartBook";
-
 export const metadata: Metadata = BookMetadata;
 export default async function Book() {
   const Article = await allArticle();
-
   const article = Article.data;
-  // const books = allBooks.length > 3 ? allBooks.slice(0, 3) : allBooks;
   return (
     <main className="relative flex-col item-c min-h-100 p-tb-5-rl-01">
       <h1 className="text-c fw-800 fs-2 md-fs-1-8 sm-fs-1-4">

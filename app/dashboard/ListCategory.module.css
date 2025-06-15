@@ -1,0 +1,72 @@
+.user {
+color: red;
+width: 100%;
+text-align: center;
+margin: 5rem;
+font-size: 1.5rem;
+}
+.container {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+padding: 1rem;
+overflow: hidden;
+}
+.title {
+font-size: 1.25rem;
+font-weight: 700;
+text-align: center;
+}
+.categoryItem {
+display: flex;
+align-items: center;
+gap: 1rem;
+border: 1px solid var(--hover-white-opacity);
+padding: 0.5rem;
+border-radius: 8px;
+}
+.input {
+border: 1px solid var(--hover-white);
+font-size: 1.1rem;
+font-weight: 500;
+padding: 0.4rem 0.6rem;
+background-color: transparent;
+color: var(--white);
+border-radius: 6px;
+width: 50%;
+transition: border 0.3s ease;
+}
+.input:focus {
+outline: none;
+border: 1px solid var(--main-site-blue-t);
+}
+.button {
+padding: 0.4rem 0.8rem;
+border-radius: 6px;
+opacity: 0.6;
+transition: opacity 0.3s ease;
+}
+.save {
+background-color: #3b82f6;
+}
+.cancel {
+background-color: #d1d5db;
+color: black;
+}
+.edit {
+background-color: #facc15;
+}
+.delete {
+background-color: #ef4444;
+}
+
+@media (hover: hover) {
+.button:hover {
+opacity: 1;
+}
+}
+@media (hover: none) {
+.button:active {
+opacity: 1;
+}
+}

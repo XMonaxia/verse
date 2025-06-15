@@ -11,10 +11,7 @@ export const stripHtml = (html: string) => {
 export const autoLink = (html: string) => {
   const urlRegex = /(?<!["'>])((https?:\/\/[^\s<]+))/g;
   return html.replace(urlRegex, (match) => {
-    const href = match.startsWith("//")
-      ? // || match.startsWith("(selengkapnya di https://")
-        `https:${match}`
-      : match;
+    const href = match.startsWith("//") ? `https:${match}` : match;
     return `<a href="${href}" target="_blank" rel="noopener noreferrer">${match}</a>`;
   });
 };
