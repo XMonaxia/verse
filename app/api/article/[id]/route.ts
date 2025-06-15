@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
-import { deleteCategory, updateCategory } from "@/lib/config/testing/axios";
-import { AddCategoryPayload } from "@/utils/testing/zod";
+import { deleteArticle, updateArticle } from "@/lib/config/testing/axios";
 import { INTERNAL_SERVER_ERROR, UNAUTHORIZED } from "@/utils/testing/status";
+import { AddArticlePayload } from "@/utils/testing/zod";
+import { NextRequest, NextResponse } from "next/server";
 
 interface Context {
   params: Promise<{ id: string }>;
@@ -18,11 +18,11 @@ export async function PUT(req: NextRequest, context: Context) {
   }
   try {
     const body = await req.json();
-    const validated = AddCategoryPayload.parse(body);
-    const result = await updateCategory((await params).id, validated, token);
+    const validated = AddArticlePayload.parse(body);
+    const result = await updateArticle((await params).id, validated, token);
     return NextResponse.json({ message: "Update berhasil", data: result });
   } catch (err) {
-    console.log("Failed to update category:", err);
+    console.log("Gagal Update Article:", err);
     return NextResponse.json(
       { message: "INTERNAL_SERVER_ERROR" },
       { status: INTERNAL_SERVER_ERROR }
@@ -40,10 +40,10 @@ export async function DELETE(req: NextRequest, context: Context) {
     );
   }
   try {
-    const result = await deleteCategory((await params).id, token);
+    const result = await deleteArticle((await params).id, token);
     return NextResponse.json({ message: result.message });
   } catch (err) {
-    console.log("Gagal delete kategori:", err);
+    console.log("Error Validasi:", err);
     return NextResponse.json(
       { message: "INTERNAL_SERVER_ERROR" },
       { status: INTERNAL_SERVER_ERROR }

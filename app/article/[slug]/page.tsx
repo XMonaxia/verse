@@ -6,11 +6,11 @@ import React from "react";
 import style from "./Slug.module.css";
 import Image from "next/image";
 import { stripHtml } from "@/utils/testing/Scripting";
-interface PageProps {
-  params: { slug: string };
+interface CategoryProps {
+  params: Promise<{ slug: string }>;
 }
-export default async function Page({ params }: PageProps) {
-  const { slug } = params;
+export default async function Page({ params }: CategoryProps) {
+  const { slug } = await params;
   const category = await allCategories();
   const article = await allArticle();
   const categories = category.data;

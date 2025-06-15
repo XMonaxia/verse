@@ -9,12 +9,11 @@ import CardLeft from "@/components/Slug/CardLeft";
 import BookContent from "@/components/Slug/Page/BookContent";
 import NotFound from "@/components/Error/NotFound";
 
-interface PageProps {
-  params: { slug: string; chapter: string };
+interface ArticleProps {
+  params: Promise<{ slug: string; chapter: string }>;
 }
-export default async function Page({ params }: PageProps) {
-  const { slug, chapter } = params;
-
+export default async function Page({ params }: ArticleProps) {
+  const { slug, chapter } = await params;
   const category = await allCategories();
   const article = await allArticle();
   const categories = category.data;
